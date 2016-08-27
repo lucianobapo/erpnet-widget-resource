@@ -9,12 +9,13 @@
 namespace ErpNET\WidgetResource\Services;
 
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class ErpnetWidgetService
 {
     /**
-     * @param array $dataArray
+     * @param Collection|array $dataArray
      * @param Model $dataModelInstance
      * @param string $routePrefix
      * @param array $fieldsConfig
@@ -23,7 +24,7 @@ class ErpnetWidgetService
      * @param Model|null $dataModelSelected
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function widgetDataIndex(array $dataArray = [],
+    public function widgetDataIndex($dataArray = [],
                            $dataModelInstance, $routePrefix, array $fieldsConfig,
                            $hasFiles = false, $method = 'POST', $dataModelSelected = null){
 //        $this->authorize($jokeService->dataModelInstance());
