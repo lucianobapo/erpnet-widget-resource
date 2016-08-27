@@ -21,7 +21,20 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // TODO: Implement register() method.
+        $this->app->register(\Collective\Html\HtmlServiceProvider::class);
+//        $this->app->register(\Laravel\Socialite\SocialiteServiceProvider::class);
+
+        $this->app->bind('trans', function ($app, $params) {
+//            dd(func_get_args());
+            return trans('general.'.$params[0], isset($params[1])?$params[1]:[]);
+        });
+
+        Form::component('customText', 'erpnetWidgetResource::components.form.text',
+            ['name', 'label' => null, 'value' => null, 'attributes' => []]);
+        Form::component('customCheckbox', 'erpnetWidgetResource::components.form.checkbox',
+            ['name', 'label' => null, 'value' => null, 'attributes' => [], 'checked' => false]);
+        Form::component('customFile', 'erpnetWidgetResource::components.form.file',
+            ['name', 'label' => null, 'value' => null, 'attributes' => []]);
     }
 
     /**
@@ -42,16 +55,5 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
 //        $this->app->config->set('auth.model', $this->app->config->get('easyAuthenticator.model'));
 
 //        include __DIR__.'/routes.php';
-
-        $this->app->register(\Collective\Html\HtmlServiceProvider::class);
-//        $this->app->register(\Laravel\Socialite\SocialiteServiceProvider::class);
-
-
-        Form::component('customText', 'erpnetWidgetResource::components.form.text',
-            ['name', 'label' => null, 'value' => null, 'attributes' => []]);
-        Form::component('customCheckbox', 'erpnetWidgetResource::components.form.checkbox',
-            ['name', 'label' => null, 'value' => null, 'attributes' => [], 'checked' => false]);
-        Form::component('customFile', 'erpnetWidgetResource::components.form.file',
-            ['name', 'label' => null, 'value' => null, 'attributes' => []]);
     }
 }
