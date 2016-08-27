@@ -46,6 +46,7 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
         $this->app->register(\Collective\Html\HtmlServiceProvider::class);
 //        $this->app->register(\Laravel\Socialite\SocialiteServiceProvider::class);
 
+
         Form::component('customText', 'erpnetWidgetResource::components.form.text',
             ['name', 'label' => null, 'value' => null, 'attributes' => []]);
         Form::component('customCheckbox', 'erpnetWidgetResource::components.form.checkbox',
