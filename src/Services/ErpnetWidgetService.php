@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ErpnetWidgetService
 {
+
     /**
      * @param Collection|array $dataArray
      * @param Model $dataModelInstance
