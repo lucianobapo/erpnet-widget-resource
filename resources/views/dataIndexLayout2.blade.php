@@ -22,26 +22,28 @@
                             <div class="list-group">
                                 @forelse(isset($data)?$data:[] as $item)
                                     <div class="list-group-item list-group-item-action">
-                                        <div>{{ app('trans',['Code']) }}: {{ $item->id }}</div>
-                                        @foreach(isset($fields)?$fields:[] as $key => $field)
-                                            @if(is_string($field) && !empty($item[$field]))
-                                                <div>{{ ucfirst($field) }}: {{ $item[$field] }}</div>
-                                            @elseif(is_array($field) && !empty($item[$field['name']]))
-                                                @if(isset($field['component']) && $field['component']=='customFile')
-                                                    <div style="display: inline-block">
+                                        <h5>{{ app('trans',['Code']) }}: {{ $item->id }}</h5>
+                                        <p>
+                                            @foreach(isset($fields)?$fields:[] as $key => $field)
+                                                @if(is_string($field) && !empty($item[$field]))
+                                                    <span>{{ ucfirst($field) }}: {{ $item[$field] }}</span>
+                                                @elseif(is_array($field) && !empty($item[$field['name']]))
+                                                    @if(isset($field['component']) && $field['component']=='customFile')
+                                                        <span style="display: inline-block">
                                                         <img class="img-responsive" src="/fileFit/200x100/{{ $item[$field['name']] }}"
                                                              title="{{ $item->title }}"
                                                              alt="{{ $item->title }}">
-                                                    </div>
-                                                @else
-                                                    <p>
+                                                    </span>
+                                                    @else
+                                                        <span>
                                                         {{ isset($field['label'])?$field['label']:ucfirst($field['name']) }}:
-                                                        {{ $item[$field['name']] }}
-                                                    </p>
+                                                            {{ $item[$field['name']] }}
+                                                    </span>
+                                                    @endif
                                                 @endif
-                                            @endif
+                                            @endforeach
+                                        </p>
 
-                                        @endforeach
                                     </div>
                                 @empty
                                     <div class="list-group-item list-group-item-action">
