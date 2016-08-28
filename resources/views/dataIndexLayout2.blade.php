@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h1>Gerenciamento de Registros</h1></div>
+                    <h1 class="panel-heading">Gerenciamento de Registros</h1>
 
                     <div class="panel-body">
                         @if (count($errors) > 0)
@@ -23,19 +23,19 @@
                                 @forelse(isset($data)?$data:[] as $item)
                                     <div class="list-group-item list-group-item-action">
                                         <h5 class="list-group-item-heading">{{ app('trans',['Code']) }}: {{ $item->id }}</h5>
-                                        <p class="list-group-item-text" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                        <div class="list-group-item-text" style="">
                                             @foreach(isset($fields)?$fields:[] as $key => $field)
                                                 @if(is_string($field) && !empty($item[$field]))
-                                                    <span class="well">{{ ucfirst($field) }}: {{ $item[$field] }}</span>
+                                                    <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">{{ ucfirst($field) }}: {{ $item[$field] }}</div>
                                                 @elseif(is_array($field) && !empty($item[$field['name']]))
                                                     @if(isset($field['component']) && $field['component']=='customFile')
-                                                        <span style="display: inline-block">
-                                                        <img class="img-responsive" src="/fileFit/200x100/{{ $item[$field['name']] }}"
-                                                             title="{{ $item->title }}"
-                                                             alt="{{ $item->title }}">
-                                                    </span>
+                                                        <div style="display: inline-block">
+                                                            <img class="img-responsive" src="/fileFit/200x100/{{ $item[$field['name']] }}"
+                                                                 title="{{ $item->title }}"
+                                                                 alt="{{ $item->title }}">
+                                                        </div>
                                                     @else
-                                                        <span>
+                                                        <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
                                                             @if(isset($field['label']))
                                                                 {{ $field['label'] }}
                                                             @else
@@ -47,11 +47,11 @@
                                                             @else
                                                                 {{ $item[$field['name']] }}
                                                             @endif
-                                                        </span>
+                                                        </div>
                                                     @endif
                                                 @endif
                                             @endforeach
-                                        </p>
+                                        </div>
 
                                     </div>
                                 @empty
