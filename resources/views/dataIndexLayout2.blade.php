@@ -19,8 +19,8 @@
                         @endif
 
                             <h2>Lista de Registros:</h2>
-                            @forelse(isset($data)?$data:[] as $item)
-                                <div class="list-group">
+                            <div class="list-group">
+                                @forelse(isset($data)?$data:[] as $item)
                                     <div class="list-group-item list-group-item-action">
                                         <div>{{ app('trans',['Code']) }}: {{ $item->id }}</div>
                                         @foreach(isset($fields)?$fields:[] as $key => $field)
@@ -43,14 +43,12 @@
 
                                         @endforeach
                                     </div>
-                                </div>
-                            @empty
-                                <div class="well">
-                                    <em>Sem registros</em>
-                                </div>
-
-                            @endforelse
-
+                                @empty
+                                    <div class="list-group-item list-group-item-action">
+                                        <em>Sem registros</em>
+                                    </div>
+                                @endforelse
+                            </div>
                             {!! get_class($data)==Illuminate\Pagination\LengthAwarePaginator::class?$data->render():'' !!}
 
                             @if(!Auth::guest())
