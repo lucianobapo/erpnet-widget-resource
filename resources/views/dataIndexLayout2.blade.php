@@ -22,11 +22,13 @@
                             <div class="list-group">
                                 @forelse(isset($data)?$data:[] as $item)
                                     <div class="list-group-item list-group-item-action">
-                                        <h5 class="list-group-item-heading">{{ app('trans',['Code']) }}: {{ $item->id }}</h5>
+                                        <h5 class="list-group-item-heading">{{ t('Code') }}: {{ $item->id }}</h5>
                                         <div class="list-group-item-text" style="">
                                             @foreach(isset($fields)?$fields:[] as $key => $field)
                                                 @if(is_string($field) && !empty($item[$field]))
-                                                    <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">{{ ucfirst($field) }}: {{ $item[$field] }}</div>
+                                                    <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
+                                                        {{ ucfirst($field) }}: {{ $item[$field] }}
+                                                    </div>
                                                 @elseif(is_array($field) && !empty($item[$field['name']]))
                                                     @if(isset($field['component']) && $field['component']=='customFile')
                                                         <div style="display: inline-block">

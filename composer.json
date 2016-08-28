@@ -11,6 +11,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravelcollective/html": "dev-master",
+        "ilhanet/erpnet-helper": "dev-master",
         "laravel/framework": "^5"
     },
     "require-dev": {
