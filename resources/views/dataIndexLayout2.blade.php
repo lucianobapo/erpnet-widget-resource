@@ -41,7 +41,12 @@
                                                             @else
                                                                 {{ ucfirst($field['name']) }}
                                                             @endif
-                                                            : {{ $item[$field['name']] }}
+                                                            :
+                                                            @if(isset($field['customShow']) && get_class($field['customShow'])=='Closure')
+                                                                {{ $field['customShow']($item) }}
+                                                            @else
+                                                                {{ $item[$field['name']] }}
+                                                            @endif
                                                         </span>
                                                     @endif
                                                 @endif
