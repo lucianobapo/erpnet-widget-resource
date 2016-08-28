@@ -23,10 +23,10 @@
                                 @forelse(isset($data)?$data:[] as $item)
                                     <div class="list-group-item list-group-item-action">
                                         <h5 class="list-group-item-heading">{{ app('trans',['Code']) }}: {{ $item->id }}</h5>
-                                        <p class="list-group-item-text" style="overflow: visible; text-wrap: none;">
+                                        <p class="list-group-item-text" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                                             @foreach(isset($fields)?$fields:[] as $key => $field)
                                                 @if(is_string($field) && !empty($item[$field]))
-                                                    <span class="well-sm">{{ ucfirst($field) }}: {{ $item[$field] }}</span>
+                                                    <span class="well">{{ ucfirst($field) }}: {{ $item[$field] }}</span>
                                                 @elseif(is_array($field) && !empty($item[$field['name']]))
                                                     @if(isset($field['component']) && $field['component']=='customFile')
                                                         <span style="display: inline-block">
