@@ -14,19 +14,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class ErpnetWidgetService
 {
-
     /**
      * @param Collection|array $dataArray
      * @param Model $dataModelInstance
      * @param string $routePrefix
      * @param array $fieldsConfig
+     * @param string $layout
      * @param bool|false $hasFiles
      * @param string $method
      * @param Model|null $dataModelSelected
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function widgetDataIndex($dataArray = [],
+    public function widget($dataArray = [],
                            $dataModelInstance, $routePrefix, array $fieldsConfig,
+                           $layout = 'dataIndex',
                            $hasFiles = false, $method = 'POST', $dataModelSelected = null){
 //        $this->authorize($jokeService->dataModelInstance());
 
@@ -39,7 +40,7 @@ class ErpnetWidgetService
 //                ];
 //            };
 //        }
-        return view('erpnetWidgetResource::dataIndex')->with([
+        return view('erpnetWidgetResource::'.$layout)->with([
             'data' => $dataArray,
 //            'dataModelSelected' => $dataModelSelected,
             'dataModelInstance' => $dataModelInstance,
