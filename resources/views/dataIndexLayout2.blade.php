@@ -36,9 +36,13 @@
                                                     </span>
                                                     @else
                                                         <span>
-                                                        {{ isset($field['label'])?$field['label']:ucfirst($field['name']) }}:
-                                                            {{ $item[$field['name']] }}
-                                                    </span>
+                                                            @if(isset($field['label']))
+                                                                {{ $field['label'] }}
+                                                            @else
+                                                                {{ ucfirst($field['name']) }}
+                                                            @endif
+                                                            : {{ $item[$field['name']] }}
+                                                        </span>
                                                     @endif
                                                 @endif
                                             @endforeach
