@@ -27,7 +27,7 @@ class ErpnetWidgetService
      */
     public function widget($dataArray = [],
                            $dataModelInstance, $routePrefix, array $fieldsConfig,
-                           $layout = 'dataIndex',
+                           $layout = 'dataIndex', $customSettings = null,
                            $hasFiles = false, $method = 'POST', $dataModelSelected = null){
 //        $this->authorize($jokeService->dataModelInstance());
 
@@ -40,7 +40,8 @@ class ErpnetWidgetService
 //                ];
 //            };
 //        }
-        return view('erpnetWidgetResource::'.$layout)->with([
+        $settings = [
+            'showToAdmin' => !Auth::guest(),
             'data' => $dataArray,
 //            'dataModelSelected' => $dataModelSelected,
             'dataModelInstance' => $dataModelInstance,
@@ -48,12 +49,16 @@ class ErpnetWidgetService
             'fields' => $fieldsConfig,
             'customFormAttr' => [
                 'route' => [
-                    $routePrefix.'.store',
+                    $routePrefix . '.store',
 //                    'joke'=>$joke,
                 ],
                 'files' => $hasFiles,
                 'method' => $method,
             ],
-        ]);
+        ];
+        if (!is_null($customSettings)) {
+            array_merge($settings, $customSettings);
+        }
+        return view('erpnetWidgetResource::'.$layout)->with($settings);
     }
 }
