@@ -57,7 +57,7 @@ class ErpnetWidgetService
             ],
         ];
         if (!is_null($customSettings)) {
-            array_merge($settings, $customSettings);
+            $settings = array_merge($settings, $customSettings);
         }
         return view('erpnetWidgetResource::'.$layout)->with($settings);
     }
