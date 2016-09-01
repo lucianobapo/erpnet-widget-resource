@@ -41,7 +41,7 @@ class ErpnetWidgetService
 //            };
 //        }
         $settings = [
-            'showToAdmin' => !Auth::guest(),
+            'showToAdmin' => !\Auth::guest(),
             'data' => $dataArray,
 //            'dataModelSelected' => $dataModelSelected,
             'dataModelInstance' => $dataModelInstance,
