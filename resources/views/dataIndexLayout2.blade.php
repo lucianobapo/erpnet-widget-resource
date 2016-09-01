@@ -64,14 +64,14 @@
                             </div>
                             {!! get_class($data)==Illuminate\Pagination\LengthAwarePaginator::class?$data->render():'' !!}
 
-                            @if(!Auth::guest())
+                            @if(Auth::guest())
                                 <a name="form"></a><h2>Formulário de Registros:</h2>
                                 {!! Form::model(isset($dataModel)?$dataModel:$dataModelInstance,
                                     isset($customFormAttr)?$customFormAttr:[]) !!}
 
                                 @foreach(isset($fields)?$fields:[] as $key => $field)
                                     @if(is_string($field))
-                                        {{ Form::customText($field) }}
+                                        {{ Form::widgetText($field) }}
                                     @elseif(is_array($field))
                                         {{ forward_static_call(
                                             ['Form',$field['component']],
@@ -79,7 +79,7 @@
                                             isset($field['label'])?$field['label']:null,
                                             isset($field['value'])?$field['value']:null,
                                             isset($field['attributes'])?$field['attributes']:null,
-                                            (isset($dataModel) && $field['component']=='customCheckbox')?$dataModel[$field['name']]:null
+                                            (isset($dataModel) && $field['component']=='widgetCheckbox')?$dataModel[$field['name']]:null
                                             ) }}
                                     @endif
                                 @endforeach

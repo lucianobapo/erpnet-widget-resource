@@ -29,11 +29,11 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
             return trans('general.'.$params[0], isset($params[1])?$params[1]:[]);
         });
 
-        Form::component('customText', 'erpnetWidgetResource::components.form.text',
+        Form::component('widgetText', 'erpnetWidgetResource::components.form.text',
             ['name', 'label' => null, 'value' => null, 'attributes' => []]);
-        Form::component('customCheckbox', 'erpnetWidgetResource::components.form.checkbox',
+        Form::component('widgetCheckbox', 'erpnetWidgetResource::components.form.checkbox',
             ['name', 'label' => null, 'value' => null, 'attributes' => [], 'checked' => false]);
-        Form::component('customFile', 'erpnetWidgetResource::components.form.file',
+        Form::component('widgetFile', 'erpnetWidgetResource::components.form.file',
             ['name', 'label' => null, 'value' => null, 'attributes' => []]);
     }
 
