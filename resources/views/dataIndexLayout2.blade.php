@@ -24,13 +24,21 @@
                                     <div class="list-group-item list-group-item-action">
                                         <h5 class="list-group-item-heading">{{ t('Code') }}: {{ $item->id }}</h5>
                                         <div class="list-group-item-text" style="">
+                                            @if($showToAdmin)
+                                                <div class="pull-right">
+                                                    {{ link_to_route($routePrefix.'.edit', 'Editar', [$item, '#form'], ['class'=>'btn btn-primary']) }}
+                                                    {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.destroy', $item] ]) }}
+                                                        {{ Form::submit('Apagar',['class'=>'btn btn-danger']) }}
+                                                    {{ Form::close() }}
+                                                </div>
+                                            @endif
                                             @foreach(isset($fields)?$fields:[] as $key => $field)
                                                 @if(is_string($field) && !empty($item[$field]))
                                                     <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
                                                         {{ ucfirst($field) }}: {{ $item[$field] }}
                                                     </div>
                                                 @elseif(is_array($field) && !empty($item[$field['name']]))
-                                                    @if(isset($field['component']) && $field['component']=='customFile')
+                                                    @if(isset($field['component']) && $field['component']=='widgetFile')
                                                         <div style="display: inline-block">
                                                             <img class="img-responsive" src="/fileFit/200x100/{{ $item[$field['name']] }}"
                                                                  title="{{ $item->title }}"
@@ -64,7 +72,7 @@
                             </div>
                             {!! get_class($data)==Illuminate\Pagination\LengthAwarePaginator::class?$data->render():'' !!}
 
-                            @if(Auth::guest())
+                            @if($showToAdmin)
                                 <a name="form"></a><h2>Formulário de Registros:</h2>
                                 {!! Form::model(isset($dataModel)?$dataModel:$dataModelInstance,
                                     isset($customFormAttr)?$customFormAttr:[]) !!}
