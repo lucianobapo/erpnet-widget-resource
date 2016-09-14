@@ -34,9 +34,7 @@
                                         @endif
 
                                         @foreach(isset($fields)?$fields:[] as $key => $field)
-                                            {{--                                                @if(is_string($field) && !empty($item>$field))--}}
                                             @if(is_string($field) && is_string($item->$field))
-                                                {{--                                                    {{ dd($item->$field) }}--}}
                                                 <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
                                                     {{ ucfirst($field) }}: {{ $item->$field }}
                                                 </div>
@@ -44,12 +42,11 @@
                                                 <?php $name = $field['name']; ?>
                                                 @if(isset($field['component']) && $field['component']=='widgetFile')
                                                     <div style="display: inline-block">
-                                                        <img class="img-responsive" src="/fileFit/200x100/{{ $item->$field['name'] }}"
+                                                        <img class="img-responsive" src="/fileFit/200x100/{{ $item->$name }}"
                                                              title="{{ $item->title }}"
                                                              alt="{{ $item->title }}">
                                                     </div>
                                                 @else
-
                                                     <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
                                                         @if(isset($field['label']))
                                                             {{ $field['label'] }}
@@ -60,12 +57,12 @@
                                                         @if(isset($field['customShow']) && get_class($field['customShow'])=='Closure')
                                                             {{ $field['customShow']($item) }}
                                                         @else
-                                                            {{ $item[$field['name']] }}
+                                                            {{ $item->$name }}
                                                         @endif
                                                     </div>
                                                 @endif
                                             @else
-                                                {{ dd(get_class($item)) }}
+                                                {{ (get_class($item)) }}
                                             @endif
                                         @endforeach
                                     </div>
