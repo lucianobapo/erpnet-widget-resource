@@ -24,10 +24,13 @@
                                 <div class="list-group-item list-group-item-action">
                                     @if($showToAdmin)
                                         <div class="pull-right">
-                                            <a class="btn">
+                                            <a class="btn btn-primary" title="{{ t('More Data') }}">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </a>
+                                            <a class="btn btn-primary" title="{{ t('Edit') }}">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
-                                            <a class="btn">
+                                            <a class="btn btn-primary" title="{{ t('Cancel') }}">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
 
@@ -53,38 +56,41 @@
                                         @endforeach
                                     </h5>
                                     <div class="list-group-item-text" style="">
-                                        @foreach(isset($fields)?$fields:[] as $key => $field)
-                                            @if(is_string($field) && is_string($item->$field))
-                                                <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
-                                                    {{ ucfirst($field) }}: {{ $item->$field }}
-                                                </div>
-                                            @elseif(is_array($field) )
-                                                <?php $name = $field['name']; ?>
-                                                @if(isset($field['component']) && $field['component']=='widgetFile')
-                                                    <div style="display: inline-block">
-                                                        <img class="img-responsive" src="/fileFit/200x100/{{ $item->$name }}"
-                                                             title="{{ $item->title }}"
-                                                             alt="{{ $item->title }}">
-                                                    </div>
-                                                @else
+                                        <ul>
+                                            @foreach(isset($fields)?$fields:[] as $key => $field)
+                                                @if(is_string($field) && is_string($item->$field))
                                                     <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
-                                                        @if(isset($field['label']))
-                                                            {{ $field['label'] }}
-                                                        @else
-                                                            {{ ucfirst($field['name']) }}
-                                                        @endif
-                                                        :
-                                                        @if(isset($field['customShow']) && get_class($field['customShow'])=='Closure')
-                                                            {{ $field['customShow']($item) }}
-                                                        @else
-                                                            {{ $item->$name }}
-                                                        @endif
+                                                        {{ ucfirst($field) }}: {{ $item->$field }}
                                                     </div>
+                                                @elseif(is_array($field) )
+                                                    <?php $name = $field['name']; ?>
+                                                    @if(isset($field['component']) && $field['component']=='widgetFile')
+                                                        <div style="display: inline-block">
+                                                            <img class="img-responsive" src="/fileFit/200x100/{{ $item->$name }}"
+                                                                 title="{{ $item->title }}"
+                                                                 alt="{{ $item->title }}">
+                                                        </div>
+                                                    @else
+                                                        <li class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
+                                                            @if(isset($field['label']))
+                                                                {{ $field['label'] }}
+                                                            @else
+                                                                {{ ucfirst($field['name']) }}
+                                                            @endif
+                                                            :
+                                                            @if(isset($field['customShow']) && get_class($field['customShow'])=='Closure')
+                                                                {{ $field['customShow']($item) }}
+                                                            @else
+                                                                {{ $item->$name }}
+                                                            @endif
+                                                        </li>
+                                                    @endif
+                                                @else
+                                                    <li>{{ (get_class($item)) }}</li>
                                                 @endif
-                                            @else
-                                                {{ (get_class($item)) }}
-                                            @endif
-                                        @endforeach
+                                            @endforeach
+                                        </ul>
+
                                     </div>
 
                                 </div>
