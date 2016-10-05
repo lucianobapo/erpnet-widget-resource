@@ -27,23 +27,19 @@
                                             <a class="btn btn-primary" title="{{ t('More Data') }}">
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                             </a>
-                                            <a class="btn btn-primary" title="{{ t('Edit') }}">
+                                            <a href="{{ route($routePrefix.'.edit', [$item->id, '#form']) }}" class="btn btn-primary" title="{{ t('Edit') }}">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
-                                            <a class="btn btn-primary" title="{{ t('Cancel') }}">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </a>
 
-                                            {{ link_to_route($routePrefix.'.edit', 'Editar', [$item->id, '#form'], ['class'=>'btn btn-primary']) }}
                                             {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.destroy', $item->id] ]) }}
-                                            {{ Form::submit('Apagar',['class'=>'btn btn-danger']) }}
+                                                <button type="submit" class="btn btn-danger" title="{{ t('Cancel') }}">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
                                             {{ Form::close() }}
                                         </div>
                                     @endif
 
                                     <h5 class="list-group-item-heading">
-                                        {{--{{ t('Code') }}: {{ $item->id }}--}}
-
                                         @foreach(isset($fields)?$fields:[] as $key => $field)
                                             @if(is_array($field) && isset($field['header']) && ($field['header']===true))
                                                 {{ $item->id }}::
@@ -55,6 +51,7 @@
                                             @endif
                                         @endforeach
                                     </h5>
+
                                     <div class="list-group-item-text" style="">
                                         <ul>
                                             @foreach(isset($fields)?$fields:[] as $key => $field)
@@ -62,7 +59,7 @@
                                                     <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
                                                         {{ ucfirst($field) }}: {{ $item->$field }}
                                                     </div>
-                                                @elseif(is_array($field) )
+                                                @elseif(is_array($field) && !isset($field['header']))
                                                     <?php $name = $field['name']; ?>
                                                     @if(isset($field['component']) && $field['component']=='widgetFile')
                                                         <div style="display: inline-block">
@@ -71,7 +68,7 @@
                                                                  alt="{{ $item->title }}">
                                                         </div>
                                                     @else
-                                                        <li class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
+                                                        <li class="" style="">
                                                             @if(isset($field['label']))
                                                                 {{ $field['label'] }}
                                                             @else
@@ -86,7 +83,7 @@
                                                         </li>
                                                     @endif
                                                 @else
-                                                    <li>{{ (get_class($item)) }}</li>
+                                                    {{--<li>{{ (get_class($item)) }}</li>--}}
                                                 @endif
                                             @endforeach
                                         </ul>
