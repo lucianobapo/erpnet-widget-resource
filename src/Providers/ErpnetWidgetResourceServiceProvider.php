@@ -31,6 +31,8 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
 
         Form::component('widgetText', 'erpnetWidgetResource::components.form.text',
             ['name', 'label' => null, 'value' => null, 'attributes' => []]);
+        Form::component('widgetSelect', 'erpnetWidgetResource::components.form.text',
+            ['name', 'label' => null, 'value' => null, 'attributes' => [], 'data' => []]);
         Form::component('widgetCheckbox', 'erpnetWidgetResource::components.form.checkbox',
             ['name', 'label' => null, 'value' => null, 'attributes' => [], 'checked' => false]);
         Form::component('widgetFile', 'erpnetWidgetResource::components.form.file',
