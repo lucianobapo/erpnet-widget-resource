@@ -116,7 +116,8 @@
                                         $field['name'],
                                         isset($field['label'])?$field['label']:null,
                                         isset($field['value'])?$field['value']:null,
-                                        isset($field['attributes'])?$field['attributes']:null,
+                                        isset($field['attributes'])?$field['attributes']:[],
+                                        isset($field['data'])?$field['data']:[],
                                         (isset($dataModel) && $field['component']=='widgetCheckbox')?$dataModel[$field['name']]:null
                                         ) }}
                                 @endif
