@@ -8,7 +8,7 @@
                     <h1 class="panel-heading">Gerenciamento de Registros</h1>
 
                     <div class="panel-body">
-                        @if (count($errors) > 0)
+                        @if (isset($errors) && count($errors) > 0)
                             <div class="alert alert-danger">
                                 <ul>
                                     @foreach ($errors->all() as $error)
