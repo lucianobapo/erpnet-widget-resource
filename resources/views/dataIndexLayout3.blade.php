@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('erpnetWidgetResource::mainLayout')
 
 @section('content')
     <div class="container">
