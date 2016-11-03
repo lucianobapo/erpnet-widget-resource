@@ -49,24 +49,25 @@
                                                 @if(isset($field['customShow']) && get_class($field['customShow'])=='Closure')
                                                     {{ $field['customShow']($item) }}
                                                 @else
-                                                    {{ $item->$name }}
+                                                    {{ $item[$name] }}
                                                 @endif
                                             @endif
                                         @endforeach
                                     </h5>
 
                                     <div class="list-group-item-text" style="">
+
                                         <ul>
                                             @foreach(isset($fields)?$fields:[] as $key => $field)
-                                                @if(is_string($field) && is_string($item->$field))
+                                                @if(is_string($field) && is_string($item[$field]))
                                                     <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
-                                                        {{ ucfirst($field) }}: {{ $item->$field }}
+                                                        {{ ucfirst($field) }}: {{ $item[$field] }}
                                                     </div>
                                                 @elseif(is_array($field) && !isset($field['header']))
                                                     <?php $name = $field['name']; ?>
                                                     @if(isset($field['component']) && $field['component']=='widgetFile')
                                                         <div style="display: inline-block">
-                                                            <img class="img-responsive" src="/fileFit/200x100/{{ $item->$name }}"
+                                                            <img class="img-responsive" src="/fileFit/200x100/{{ $item[$name] }}"
                                                                  title="{{ $item->title }}"
                                                                  alt="{{ $item->title }}">
                                                         </div>
@@ -81,7 +82,7 @@
                                                             @if(isset($field['customShow']) && get_class($field['customShow'])=='Closure')
                                                                 {{ $field['customShow']($item) }}
                                                             @else
-                                                                {{ $item->$name }}
+                                                                {{ $item[$name] }}
                                                             @endif
                                                         </li>
                                                     @endif
