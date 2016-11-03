@@ -8,6 +8,7 @@
  */
 namespace ErpNET\WidgetResource\Providers;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Collective\Html\FormFacade as Form;
 
@@ -22,6 +23,7 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(\Collective\Html\HtmlServiceProvider::class);
+        AliasLoader::getInstance()->alias("Form", \Collective\Html\FormFacade::class);
 //        $this->app->register(\Laravel\Socialite\SocialiteServiceProvider::class);
 
         $this->app->bind('trans', function ($app, $params) {
