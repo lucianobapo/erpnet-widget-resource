@@ -48,9 +48,9 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="{{ route('partners.index') }}">partners</a></li>
-                <li><a href="{{ route('productGroups.index') }}">productGroups</a></li>
-                <li><a href="{{ route('cloudFiles.index') }}">Cloud File Storage</a></li>
+                {{--<li><a href="{{ route('partners.index') }}">partners</a></li>--}}
+                {{--<li><a href="{{ route('productGroups.index') }}">productGroups</a></li>--}}
+                {{--<li><a href="{{ route('cloudFiles.index') }}">Cloud File Storage</a></li>--}}
             </ul>
 
             <!-- Right Side Of Navbar -->
