@@ -20,7 +20,7 @@
 
                         <h2>Lista de Registros:</h2>
 
-                        {!! $data instanceof Illuminate\Pagination\LengthAwarePaginator?$data->render():'' !!}
+                        {!! $data instanceof Illuminate\Pagination\LengthAwarePaginator?$data->render():(isset($render)?$render:'') !!}
 
                         <div class="list-group">
                             @forelse(isset($data)?$data:[] as $item)
@@ -101,7 +101,7 @@
                                 </div>
                             @endforelse
                         </div>
-                        {!! $data instanceof Illuminate\Pagination\LengthAwarePaginator?$data->render():'' !!}
+                        {!! $data instanceof Illuminate\Pagination\LengthAwarePaginator?$data->render():(isset($render)?$render:'') !!}
 
                         @if($showToAdmin)
                             <a name="form"></a><h2>Formulário de Registros:</h2>
