@@ -64,7 +64,7 @@
                                                         {{ ucfirst($field) }}: {{ $item[$field] }}
                                                     </div>
                                                 @elseif(is_array($field) && !isset($field['header']))
-                                                    <li class="" style="">
+                                                    <li class="well well-sm" style="">
                                                         @if(isset($field['label']))
                                                             {{ $field['label'] }}
                                                         @else
