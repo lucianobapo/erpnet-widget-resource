@@ -60,11 +60,11 @@
                                         <ul>
                                             @foreach(isset($fields)?$fields:[] as $key => $field)
                                                 @if(is_string($field) && isset($item[$field]))
-                                                    <div class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
+                                                    <li class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
                                                         {{ ucfirst($field) }}: {{ $item[$field] }}
-                                                    </div>
+                                                    </li>
                                                 @elseif(is_array($field) && !isset($field['header']))
-                                                    <li class="well well-sm" style="">
+                                                    <li class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
                                                         @if(isset($field['label']))
                                                             {{ $field['label'] }}
                                                         @else
