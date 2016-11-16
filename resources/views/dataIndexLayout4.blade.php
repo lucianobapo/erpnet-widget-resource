@@ -104,8 +104,8 @@
                                     {{ Form::widgetText($field) }}
                                 @elseif(is_array($field))
                                     {{ forward_static_call(
-                                        ['Form',$field['component']],
-                                        $field['name'],
+                                        ['Form',isset($field['component'])?$field['component']:'widgetText'],
+                                        $key,
                                         isset($field['label'])?$field['label']:null,
                                         isset($field['value'])?$field['value']:null,
                                         isset($field['attributes'])?$field['attributes']:[],
