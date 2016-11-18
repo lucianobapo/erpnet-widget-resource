@@ -51,7 +51,7 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'erpnetWidgetResource');
 
         $this->publishes([
-//            __DIR__.'/../../config/erpnetWidgetResource.php' => config_path('erpnetWidgetResource.php'),
+            __DIR__.'/../../config/erpnetWidgetResource.php' => config_path('erpnetWidgetResource.php'),
             __DIR__.'/../../resources/views' => base_path('resources/views/vendor/erpnetWidgetResource'),
 //            __DIR__.'/Migrations' => base_path('database/migrations'),
         ]);

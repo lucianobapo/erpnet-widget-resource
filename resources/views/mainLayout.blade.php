@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('erpnet.siteName') }}</title>
+    <title>{{ config('erpnetWidgetResource.siteName') }}</title>
 
     <!-- Styles -->
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
@@ -35,13 +35,13 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}" style="padding: 0px 15px">
-                <img src="{{ config('erpnet.siteLogo') }}"
+                <img src="{{ config('erpnetWidgetResource.siteLogo') }}"
                      alt="{{ 'Logomarca do Site '.url('/') }}"
                      title="{{ url('/') }}"
                      style="max-height: 100%;">
             </a>
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('erpnet.siteName') }}
+                {{ config('erpnetWidgetResource.siteName') }}
             </a>
         </div>
 

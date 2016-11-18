@@ -49,7 +49,7 @@
                                                 @if(isset($field['customShow']) && get_class($field['customShow'])=='Closure')
                                                     {{ $field['customShow']($item) }}
                                                 @else
-                                                    {{ $item[$name] }}
+                                                    {{ $item[$key] }}
                                                 @endif
                                             @endif
                                         @endforeach
@@ -64,7 +64,7 @@
                                                         {{ ucfirst($field) }}: {{ $item[$field] }}
                                                     </li>
                                                 @elseif(is_array($field) && !isset($field['header']))
-                                                    <li class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
+                                                    <li class="" style="">
                                                         @if(isset($field['label']))
                                                             {{ $field['label'] }}
                                                         @else
@@ -72,7 +72,7 @@
                                                         @endif
                                                         :
                                                         @if(isset($field['customShow']) && get_class($field['customShow'])=='Closure')
-                                                            {{ $field['customShow']($item) }}
+                                                            {!! $field['customShow']($item) !!}
                                                         @else
                                                             {{ $item[$key] }}
                                                         @endif
