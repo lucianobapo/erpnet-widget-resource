@@ -47,7 +47,7 @@
                                             @if(is_array($field) && isset($field['header']) && ($field['header']===true))
                                                 {{ $item['id'] }}::
                                                 @if(isset($field['customShow']) && get_class($field['customShow'])=='Closure')
-                                                    {{ $field['customShow']($item) }}
+                                                    {!! $field['customShow']($item) !!}
                                                 @else
                                                     {{ $item[$key] }}
                                                 @endif
