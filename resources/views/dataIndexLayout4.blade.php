@@ -96,7 +96,7 @@
 
                         @if($showToAdmin)
                             <a name="form"></a><h2>Formulário de Registros:</h2>
-                            {!! Form::model(isset($dataModel)?$dataModel:$dataModelInstance,
+                            {!! Form::model(isset($dataModelSelected)?$dataModelSelected:$dataModelInstance,
                                 isset($customFormAttr)?$customFormAttr:[]) !!}
 
                             @foreach(isset($fields)?$fields:[] as $key => $field)
@@ -110,7 +110,7 @@
                                         isset($field['value'])?$field['value']:null,
                                         isset($field['attributes'])?$field['attributes']:[],
                                         isset($field['data'])?$field['data']:[],
-                                        (isset($dataModel) && $field['component']=='widgetCheckbox')?$dataModel[$field['name']]:null
+                                        (isset($dataModelSelected) && $field['component']=='widgetCheckbox')?$dataModelSelected[$field['name']]:null
                                         ) }}
                                 @endif
                             @endforeach

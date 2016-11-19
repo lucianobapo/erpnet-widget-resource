@@ -27,8 +27,10 @@ class ErpnetWidgetService
      */
     public function widget($dataArray = [],
                            $dataModelInstance, $routePrefix, array $fieldsConfig,
-                           $layout = 'dataIndex', $customSettings = null,
-                           $hasFiles = false, $method = 'POST', $dataModelSelected = null){
+                           $layout = 'dataIndex',
+                           $customSettings = null,
+                           $dataModelSelected = null,
+                           $hasFiles = false, $method = 'POST' ){
 //        $this->authorize($jokeService->dataModelInstance());
 
 //        $fields = $jokeService->getFillableFields();
@@ -43,7 +45,7 @@ class ErpnetWidgetService
         $settings = [
             'showToAdmin' => !\Auth::guest(),
             'data' => $dataArray,
-//            'dataModelSelected' => $dataModelSelected,
+            'dataModelSelected' => $dataModelSelected,
             'dataModelInstance' => $dataModelInstance,
             'routePrefix' => $routePrefix,
             'fields' => $fieldsConfig,
