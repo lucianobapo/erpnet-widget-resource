@@ -8,8 +8,19 @@
                     <h1 class="panel-heading">Gerenciamento de Registros</h1>
 
                     <div class="panel-body">
+
+                        @if (Session::has('message'))
+                            <div class="alert alert-info">
+                                <span class="pull-right fa fa-info-circle fa-2x"></span>
+                                <ul>
+                                    <li>{{ Session::get('message') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+
                         @if (isset($errors) && count($errors) > 0)
                             <div class="alert alert-danger">
+                                <span class="pull-right fa fa-warning fa-2x"></span>
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -60,11 +71,11 @@
                                         <ul>
                                             @foreach(isset($fields)?$fields:[] as $key => $field)
                                                 @if(is_string($field) && isset($item[$field]))
-                                                    <li class="well well-sm" style="display: inline-block; margin-bottom: 5px;">
+                                                    <li class="" style="">
                                                         {{ ucfirst($field) }}: {{ $item[$field] }}
                                                     </li>
                                                 @elseif(is_array($field) && !isset($field['header']))
-                                                    <li class="" style="">
+                                                    <li class="" style="{{ empty($item[$key])?'display:none':'' }}">
                                                         @if(isset($field['label']))
                                                             {{ $field['label'] }}
                                                         @else
@@ -94,10 +105,18 @@
                         </div>
                         {!! $data instanceof Illuminate\Pagination\LengthAwarePaginator?$data->render():(isset($render)?$render:'') !!}
 
+
                         @if($showToAdmin)
                             <a name="form"></a><h2>Formulário de Registros:</h2>
-                            {!! Form::model(isset($dataModelSelected)?$dataModelSelected:$dataModelInstance,
-                                isset($customFormAttr)?$customFormAttr:[]) !!}
+
+{{--                            {!! Form::model(is_object($dataModelSelected)?$dataModelSelected:$dataModelInstance,--}}
+                                {{--isset($customFormAttr)?$customFormAttr:[]) !!}--}}
+
+                                @if(isset($customFormAttr))
+                                    {{ Form::model(is_object($dataModelSelected)?$dataModelSelected:$dataModelInstance, $customFormAttr) }}
+                                @else
+                                    {{ Form::model(is_object($dataModelSelected)?$dataModelSelected:$dataModelInstance) }}
+                                @endif
 
                             @foreach(isset($fields)?$fields:[] as $key => $field)
                                 @if(is_string($field))
@@ -109,8 +128,7 @@
                                         isset($field['label'])?$field['label']:null,
                                         isset($field['value'])?$field['value']:null,
                                         isset($field['attributes'])?$field['attributes']:[],
-                                        isset($field['data'])?$field['data']:[],
-                                        (isset($dataModelSelected) && $field['component']=='widgetCheckbox')?$dataModelSelected[$field['name']]:null
+                                        (isset($dataModelSelected) && isset($field['component']) && $field['component']=='widgetCheckbox')?$dataModelSelected[$key]:(isset($field['data'])?$field['data']:[])
                                         ) }}
                                 @endif
                             @endforeach

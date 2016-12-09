@@ -50,10 +50,10 @@ class ErpnetWidgetService
             'routePrefix' => $routePrefix,
             'fields' => $fieldsConfig,
             'customFormAttr' => [
-                'route' => [
-                    $routePrefix . '.store',
+//                'route' => [
+//                    $routePrefix . '.store',
 //                    'joke'=>$joke,
-                ],
+//                ],
                 'files' => $hasFiles,
                 'method' => $method,
             ],
