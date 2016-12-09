@@ -34,12 +34,15 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}" style="padding: 0px 15px">
-                <img src="{{ config('erpnetWidgetResource.siteLogo') }}"
-                     alt="{{ 'Logomarca do Site '.url('/') }}"
-                     title="{{ url('/') }}"
-                     style="max-height: 100%;">
-            </a>
+            @if(config('erpnetWidgetResource.siteLogo')!==false)
+                <a class="navbar-brand" href="{{ url('/') }}" style="padding: 0px 15px">
+                    <img src="{{ config('erpnetWidgetResource.siteLogo') }}"
+                         alt="{{ 'Logomarca do Site '.url('/') }}"
+                         title="{{ url('/') }}"
+                         style="max-height: 100%;">
+                </a>
+            @endif
+
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('erpnetWidgetResource.siteName') }}
             </a>
