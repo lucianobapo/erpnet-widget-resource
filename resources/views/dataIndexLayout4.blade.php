@@ -1,4 +1,4 @@
-@extends('erpnetWidgetResource::mainLayout')
+@extends('erpnetWidgetResource::layouts.mainLayout')
 
 @section('content')
     <div class="container">
@@ -122,6 +122,9 @@
                                 @if(is_string($field))
                                     {{ Form::widgetText($field) }}
                                 @elseif(is_array($field))
+                                    @if(isset($field['component']) && $field['component']=='widgetCheckbox')
+                                        {!! Form::hidden($key, false) !!}
+                                    @endif
                                     {{ forward_static_call(
                                         ['Form',isset($field['component'])?$field['component']:'widgetText'],
                                         $key,
