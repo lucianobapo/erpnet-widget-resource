@@ -33,6 +33,7 @@
                 <span class="icon-bar"></span>
             </button>
 
+
             <!-- Branding Image -->
             @if(config('erpnetWidgetResource.siteLogo')!==false)
                 <a class="navbar-brand" href="{{ url('/') }}" style="padding: 0px 15px">
