@@ -5,9 +5,9 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 @if(config('app.env')=='local')
-                    @include('erpnetWidgetResource::unversioned.show-dist')
+                    @include('erpnetWidgetResource::unversioned.show-dist', ['routeName'=> $routeName])
                 @else
-                    @include('erpnetWidgetResource::unversioned.show')
+                    @include('erpnetWidgetResource::unversioned.show', ['routeName'=> $routeName])
                 @endif
 
             </div>
