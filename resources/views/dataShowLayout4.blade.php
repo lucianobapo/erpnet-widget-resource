@@ -9,6 +9,7 @@
                 {{--@else--}}
                     {{--@include('erpnetWidgetResource::unversioned.show')--}}
                 {{--@endif--}}
+
             </div>
         </div>
     </div>
