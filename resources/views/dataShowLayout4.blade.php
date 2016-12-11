@@ -7,7 +7,7 @@
                 @if(config('app.env')=='local')
                     @include('erpnetWidgetResource::unversioned.show-dist')
                 @else
-                    @include('erpnetWidgetResource::unversioned.show')
+                    @include('erpnetWidgetResource::unversioned.show', ['shareUrl'=>'teste', 'fileName'=>'teste',  'loginButton'=>'teste', ])
                 @endif
 
             </div>
