@@ -17,7 +17,8 @@
 
                     {{--Mostra a imagem do teste com um link para o teste--}}
                     <a class="thumbnail" href="{{ route($routePrefix.'.show',[$item]) }}">
-                        <img class="img-responsive" title="{{ $item->title }}" alt="{{ $item->title }}">
+                        <img class="img-responsive" src="{{ $item->fileImageUrlField('file') }}"
+                             title="{{ $item->title }}" alt="{{ $item->title }}">
                         {{--<img class="img-responsive" src="{{ route('file.fit',['350x200', $item->file]) }}"--}}
                              {{--title="{{ $item->title }}"--}}
                              {{--alt="{{ $item->title }}">--}}
