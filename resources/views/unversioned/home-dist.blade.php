@@ -12,11 +12,11 @@
             @forelse(isset($data)?$data:[] as $item)
                 <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                     {{--Mostra o título do teste--}}
-                    <a class="jokeTitle" href="{{ route($routeName.'.show',[$item]) }}">{{ $item->title }}</a>
+                    <a class="jokeTitle" href="{{ route($routePrefix.'.show',[$item]) }}">{{ $item->title }}</a>
                     <p class="text-right"><em>{{ $item->description }}</em></p>
 
                     {{--Mostra a imagem do teste com um link para o teste--}}
-                    <a class="thumbnail" href="{{ route($routeName.'.show',[$item]) }}">
+                    <a class="thumbnail" href="{{ route($routePrefix.'.show',[$item]) }}">
                         <img class="img-responsive" title="{{ $item->title }}" alt="{{ $item->title }}">
                         {{--<img class="img-responsive" src="{{ route('file.fit',['350x200', $item->file]) }}"--}}
                              {{--title="{{ $item->title }}"--}}
