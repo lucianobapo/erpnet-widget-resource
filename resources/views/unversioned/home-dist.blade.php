@@ -8,6 +8,8 @@
                 <h1 class="page-header">{{ app('trans',['List']) }}</h1>
             </div>
 
+            {!! $data instanceof Illuminate\Pagination\LengthAwarePaginator?$data->render():(isset($render)?$render:'') !!}
+
             {{--Lista de repetição, mostra todos os registros de teste--}}
             @forelse(isset($data)?$data:[] as $item)
                 <div class="col-lg-3 col-md-4 col-xs-6 thumb">
@@ -31,6 +33,7 @@
                 </div>
             @endforelse
 
+            {!! $data instanceof Illuminate\Pagination\LengthAwarePaginator?$data->render():(isset($render)?$render:'') !!}
 
         </div>
     </div>
