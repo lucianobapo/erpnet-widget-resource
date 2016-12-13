@@ -35,21 +35,21 @@
         </div>
 
         {{--Botão "Fazer Teste"--}}
-        @if(isset($jokeMakeButton) && !is_null($jokeMakeButton))
-            <p><a href="{{ $jokeMakeButton }}" class="btn btn-primary">Fazer Teste</a></p>
+        @if(Auth::guest())
+            <p><a href="{{ route('post.show') }}" class="btn btn-primary">Fazer Teste</a></p>
         @endif
 
         {{--Botão "Refazer Teste"--}}
-        @if(isset($jokeReMakeButton) && !is_null($jokeReMakeButton))
+        @if(Auth::guest())
             <p>
-                <a href="{{ $jokeReMakeButton }}" class="btn btn-primary">Tente novamente</a>
+                <a href="{{ route('post.show') }}" class="btn btn-primary">Tente novamente</a>
             </p>
         @endif
 
         {{--Botão "Login"--}}
-        @if(isset($loginButton) && !is_null($loginButton))
+        @if(Auth::guest())
             <p>
-                <a href="{{ $loginButton }}" class="btn btn-primary">
+                <a href="{{ Route::getRoutes()->hasNamedRoute('auth.redirect')?route('auth.redirect'):url('/') }}" class="btn btn-primary">
                     <i class="fa fa-facebook-official"></i> Conecte-se com Facebook
                 </a>
             </p>

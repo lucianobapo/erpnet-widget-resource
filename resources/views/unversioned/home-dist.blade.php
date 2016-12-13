@@ -4,11 +4,12 @@
     <div class="panel-body">
 
         <div class="row">
+
             <div class="col-lg-12">
                 <h1 class="page-header">{{ app('trans',['List']) }}</h1>
+                {!! $data instanceof Illuminate\Pagination\LengthAwarePaginator?$data->render():(isset($render)?$render:'') !!}
             </div>
 
-            {!! $data instanceof Illuminate\Pagination\LengthAwarePaginator?$data->render():(isset($render)?$render:'') !!}
 
             {{--Lista de repetição, mostra todos os registros de teste--}}
             @forelse(isset($data)?$data:[] as $item)
@@ -33,7 +34,9 @@
                 </div>
             @endforelse
 
-            {!! $data instanceof Illuminate\Pagination\LengthAwarePaginator?$data->render():(isset($render)?$render:'') !!}
+            <div class="col-lg-12">
+                {!! $data instanceof Illuminate\Pagination\LengthAwarePaginator?$data->render():(isset($render)?$render:'') !!}
+            </div>
 
         </div>
     </div>
