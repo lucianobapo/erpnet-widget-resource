@@ -53,7 +53,9 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li><a href="{{ route('post.home') }}">home</a></li>
-                <li><a href="{{ route('post.index') }}">post</a></li>
+                @if(!Auth::guest())
+                    <li><a href="{{ route('post.index') }}">post</a></li>
+                @endif
                 {{--<li><a href="{{ route('partners.index') }}">partners</a></li>--}}
                 {{--<li><a href="{{ route('productGroups.index') }}">productGroups</a></li>--}}
                 {{--<li><a href="{{ route('cloudFiles.index') }}">Cloud File Storage</a></li>--}}

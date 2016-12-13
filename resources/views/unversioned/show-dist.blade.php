@@ -36,14 +36,14 @@
 
         {{--Botão "Fazer Teste"--}}
         @if(!Auth::guest() && (Request::route()->getName()!='post.random') )
-            <p><a href="{{ Route::getRoutes()->hasNamedRoute('post.random')?route('post.random'):url('/') }}" class="btn btn-primary">
+            <p><a href="{{ Route::getRoutes()->hasNamedRoute('post.random')?route('post.random', $dataModelSelected):url('/') }}" class="btn btn-primary">
                     <i class="fa fa-question-circle" aria-hidden="true"></i> Fazer Teste</a></p>
         @endif
 
         {{--Botão "Refazer Teste"--}}
         @if(!Auth::guest() && (Request::route()->getName()=='post.random') )
             <p>
-                <a href="{{ Route::getRoutes()->hasNamedRoute('post.random')?route('post.random'):url('/') }}" class="btn btn-primary">
+                <a href="{{ Route::getRoutes()->hasNamedRoute('post.random')?route('post.random', $dataModelSelected):url('/') }}" class="btn btn-primary">
                     <i class="fa fa-repeat" aria-hidden="true"></i> Tente novamente</a>
             </p>
         @endif
