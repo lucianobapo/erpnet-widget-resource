@@ -41,7 +41,7 @@
                                             <a class="btn btn-primary" title="{{ t('More Data') }}">
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                             </a>
-                                            <a href="{{ route($routePrefix.'.edit', [$item['id'], '#form']) }}" class="btn btn-primary" title="{{ t('Edit') }}">
+                                            <a href="{{ Route::getRoutes()->hasNamedRoute($routePrefix.'.edit')?route($routePrefix.'.edit', [$item['id'], '#form']):route($routePrefix.'.show', [$item['id'], '#form']) }}" class="btn btn-primary" title="{{ t('Edit') }}">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
 
