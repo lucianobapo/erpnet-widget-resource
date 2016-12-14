@@ -55,6 +55,7 @@
                 <li><a href="{{ route('post.home') }}">home</a></li>
                 @if(!Auth::guest())
                     <li><a href="{{ route('post.index') }}">post</a></li>
+                    <li><a href="{{ route('user.index') }}">post</a></li>
                 @endif
                 {{--<li><a href="{{ route('partners.index') }}">partners</a></li>--}}
                 {{--<li><a href="{{ route('productGroups.index') }}">productGroups</a></li>--}}
