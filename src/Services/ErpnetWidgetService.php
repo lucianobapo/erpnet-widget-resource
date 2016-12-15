@@ -63,4 +63,13 @@ class ErpnetWidgetService
         }
         return view('erpnetWidgetResource::'.$layout)->with($settings);
     }
+
+    /**
+     * @param string $layout
+     * @param array|null $customSettings
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function render( $layout, array $customSettings){
+        return view('erpnetWidgetResource::'.$layout)->with($customSettings);
+    }
 }
