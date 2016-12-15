@@ -7,9 +7,7 @@
                 @if(config('app.env')=='local')
                     @include('erpnetWidgetResource::unversioned.show-dist')
                 @else
-                    @include('erpnetWidgetResource::unversioned.show', [
-                        'shareUrl'=>url($_SERVER['REQUEST_URI'].((Request::route()->getName()=='post.random')?'/'.$dataModelSelected->file:'')),
-                    ])
+                    @include('erpnetWidgetResource::unversioned.show', ['shareUrl'=>url($_SERVER['REQUEST_URI'].((Request::route()->getName()=='post.random')?'/'.$dataModelSelected->file:'')) ])
                 @endif
 
             </div>
