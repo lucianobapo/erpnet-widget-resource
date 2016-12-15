@@ -15,7 +15,7 @@
 
         <div class="well">
             <div class="fb-like"
-                 data-href="{{ url($_SERVER['REQUEST_URI']) }}"
+                 data-href="{{ url($_SERVER['REQUEST_URI'].((Request::route()->getName()=='post.random')?'/'.$dataModelSelected->file:'')) }}"
                  data-layout="button_count"
                  data-action="like"
                  data-size="large"
@@ -24,24 +24,24 @@
             </div>
 
             <div class="fb-share-button"
-                 data-href="{{ url($_SERVER['REQUEST_URI']) }}"
+                 data-href="{{ url($_SERVER['REQUEST_URI'].((Request::route()->getName()=='post.random')?'/'.$dataModelSelected->file:'')) }}"
                  data-layout="button_count" data-size="large"
                  data-mobile-iframe="true">
                 <a class="fb-xfbml-parse-ignore" target="_blank"
-                   href="https://www.facebook.com/sharer/sharer.php?u={{ url($_SERVER['REQUEST_URI']) }}&amp;src=sdkpreparse">
+                   href="https://www.facebook.com/sharer/sharer.php?u={{ url($_SERVER['REQUEST_URI'].((Request::route()->getName()=='post.random')?'/'.$dataModelSelected->file:'')) }}&amp;src=sdkpreparse">
                     Compartilhar
                 </a>
             </div>
         </div>
 
         {{--Botão "Fazer Teste"--}}
-        @if(!Auth::guest() && (Request::route()->getName()!='post.random') )
+        @if(Auth::check() && (Request::route()->getName()!='post.random') )
             <p><a href="{{ Route::getRoutes()->hasNamedRoute('post.random')?route('post.random', $dataModelSelected):url('/') }}" class="btn btn-primary">
                     <i class="fa fa-question-circle" aria-hidden="true"></i> Fazer Teste</a></p>
         @endif
 
         {{--Botão "Refazer Teste"--}}
-        @if(!Auth::guest() && (Request::route()->getName()=='post.random') )
+        @if(Auth::check() && (Request::route()->getName()=='post.random') )
             <p>
                 <a href="{{ Route::getRoutes()->hasNamedRoute('post.random')?route('post.random', $dataModelSelected):url('/') }}" class="btn btn-primary">
                     <i class="fa fa-repeat" aria-hidden="true"></i> Tente novamente</a>
