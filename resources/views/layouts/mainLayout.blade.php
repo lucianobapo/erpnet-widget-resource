@@ -53,9 +53,9 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li><a href="{{ route('post.home') }}">home</a></li>
-                @if(!Auth::guest())
+                @if(Auth::check() && is_callable([Auth::user(), 'isAdmin']) && Auth::user()->isAdmin())
                     <li><a href="{{ route('post.index') }}">post</a></li>
-                    <li><a href="{{ route('user.index') }}">post</a></li>
+                    <li><a href="{{ route('user.index') }}">user</a></li>
                 @endif
                 {{--<li><a href="{{ route('partners.index') }}">partners</a></li>--}}
                 {{--<li><a href="{{ route('productGroups.index') }}">productGroups</a></li>--}}
