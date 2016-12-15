@@ -24,10 +24,8 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
     {
         $this->app->register(\Collective\Html\HtmlServiceProvider::class);
         AliasLoader::getInstance()->alias("Form", \Collective\Html\FormFacade::class);
-//        $this->app->register(\Laravel\Socialite\SocialiteServiceProvider::class);
 
         $this->app->bind('trans', function ($app, $params) {
-//            dd(func_get_args());
             return trans('general.'.$params[0], isset($params[1])?$params[1]:[]);
         });
 
@@ -39,6 +37,10 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
             ['name', 'label' => null, 'value' => null, 'attributes' => [], 'checked' => false]);
         Form::component('widgetFile', 'erpnetWidgetResource::components.form.file',
             ['name', 'label' => null, 'value' => null, 'attributes' => []]);
+
+        $projectRootDir = __DIR__.DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR;
+        $configPath = $projectRootDir . 'config/erpnetWidgetResource.php';
+        $this->mergeConfigFrom($configPath, 'erpnetWidgetResource');
     }
 
     /**
@@ -48,16 +50,14 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'erpnetWidgetResource');
+        $projectRootDir = __DIR__.DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR;
+
+        $this->loadViewsFrom($projectRootDir.'resources/views', 'erpnetWidgetResource');
 
         $this->publishes([
-            __DIR__.'/../../config/erpnetWidgetResource.php' => config_path('erpnetWidgetResource.php'),
-            __DIR__.'/../../resources/views' => base_path('resources/views/vendor/erpnetWidgetResource'),
-//            __DIR__.'/Migrations' => base_path('database/migrations'),
+            $projectRootDir.'config/erpnetWidgetResource.php' => config_path('erpnetWidgetResource.php'),
+            $projectRootDir.'resources/views' => base_path('resources/views/vendor/erpnetWidgetResource'),
         ]);
 
-//        $this->app->config->set('auth.model', $this->app->config->get('easyAuthenticator.model'));
-
-//        include __DIR__.'/routes.php';
     }
 }
