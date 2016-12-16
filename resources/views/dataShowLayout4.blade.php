@@ -1,5 +1,27 @@
 @extends('erpnetWidgetResource::layouts.mainLayout')
 
+@section('customHeadMetaTags')
+    <meta property="fb:app_id" content="{{ config('services.facebook.client_id') }}">
+    <meta property="og:site_name" content="{{ config('erpnetWidgetResource.siteName') }}">
+    <meta property="og:url" content="{{ url($_SERVER['REQUEST_URI']) }}">
+
+    {{--<meta property="article:published_time" content="2016-07-03T08:02:13+00:00">--}}
+    {{--<meta property="article:section" content="Desenhos">--}}
+    {{--<meta property="article:tag" content="Teste qual super-herói você seria">--}}
+
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="{{ $dataModelSelected->fileImageUrlField('file') }}">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="420">
+    <meta property="og:title" content="{{ $dataModelSelected->title }}">
+    <meta property="og:description" content="{{ $dataModelSelected->description }}">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ $dataModelSelected->title }}">
+    <meta name="twitter:description" content="{{ $dataModelSelected->description }}">
+    <meta name="twitter:image" content="{{ $dataModelSelected->fileImageUrlField('file') }}">
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
