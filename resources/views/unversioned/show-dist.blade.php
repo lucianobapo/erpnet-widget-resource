@@ -7,7 +7,7 @@
         <p><em>{{ $dataModelSelected['description'] }}</em></p>
         @if(isset($dataModelSelected['file']))
             <p>
-                <img class="img-responsive" src="{{ $dataModelSelected->fileImageUrlField('file') }}">
+                <img class="img-responsive" src="{{ $dataModelSelected->fileImageUrlField('file', true) }}">
             </p>
         @else
             <div class="well"><em>Sem Imagem</em></div>
