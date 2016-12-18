@@ -54,7 +54,9 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                @if(Route::has('post.home'))<li><a href="{{ route('post.home') }}">home</a></li>
+                @if(Route::has('post.home'))
+                    <li><a href="{{ route('post.home') }}">home</a></li>
+                @endif
                 @if(Auth::check() && is_callable([Auth::user(), 'isAdmin']) && Auth::user()->isAdmin())
                     <li><a href="{{ route('post.index') }}">post</a></li>
                     <li><a href="{{ route('user.index') }}">user</a></li>

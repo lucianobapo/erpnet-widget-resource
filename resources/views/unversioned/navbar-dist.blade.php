@@ -3,7 +3,10 @@
 <ul class="nav navbar-nav navbar-right">
     <!-- Authentication Links -->
     @if (Auth::guest())
-        <li><a href="{{ route('socialAuth.redirect', 'facebook') }}">Facebook</a></li>
+        @if(Route::has('socialAuth.redirect'))
+            <li><a href="{{ route('socialAuth.redirect', 'facebook') }}">Facebook</a></li>
+        @endif
+
         <li><a href="{{ route('login') }}">Login</a></li>
         <li><a href="{{ route('register') }}">Register</a></li>
     @else
