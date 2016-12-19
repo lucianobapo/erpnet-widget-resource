@@ -20,7 +20,7 @@
 
         <div class="well">
             <div class="fb-like"
-                 data-href="{{ (Request::route()->getName()=='post.random' && Auth::check())?route('post.showRandom', [Auth::user()->provider_id, $dataModelSelected->file]):url($_SERVER['REQUEST_URI']) }}"
+                 data-href="{{ (Request::route()->getName()=='post.random' && Auth::check())?route('post.showRandom', [$dataModelSelected, Auth::user()->provider_id, $dataModelSelected->file]):url($_SERVER['REQUEST_URI']) }}"
                  data-layout="button_count"
                  data-action="like"
                  data-size="large"
@@ -29,11 +29,11 @@
             </div>
 
             <div class="fb-share-button"
-                 data-href="{{ (Request::route()->getName()=='post.random' && Auth::check())?route('post.showRandom', [Auth::user()->provider_id, $dataModelSelected->file]):url($_SERVER['REQUEST_URI']) }}"
+                 data-href="{{ (Request::route()->getName()=='post.random' && Auth::check())?route('post.showRandom', [$dataModelSelected, Auth::user()->provider_id, $dataModelSelected->file]):url($_SERVER['REQUEST_URI']) }}"
                  data-layout="button_count" data-size="large"
                  data-mobile-iframe="true">
                 <a class="fb-xfbml-parse-ignore" target="_blank"
-                   href="https://www.facebook.com/sharer/sharer.php?u={{ (Request::route()->getName()=='post.random' && Auth::check())?route('post.showRandom', [Auth::user()->provider_id, $dataModelSelected->file]):url($_SERVER['REQUEST_URI']) }}&amp;src=sdkpreparse">
+                   href="https://www.facebook.com/sharer/sharer.php?u={{ (Request::route()->getName()=='post.random' && Auth::check())?route('post.showRandom', [$dataModelSelected, Auth::user()->provider_id, $dataModelSelected->file]):url($_SERVER['REQUEST_URI']) }}&amp;src=sdkpreparse">
                     Compartilhar
                 </a>
             </div>
