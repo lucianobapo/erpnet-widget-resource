@@ -43,7 +43,7 @@ class ErpnetWidgetService
 //            };
 //        }
         $settings = [
-            'showToAdmin' => (\Auth::check() || config('erpnetWidgetResource.forceAdmin')),
+            'showToAdmin' => (\Auth::check() || config('erpnetWidgetResource.showToAdmin')),
             'data' => $dataArray,
             'dataModelSelected' => $dataModelSelected,
             'dataModelInstance' => $dataModelInstance,
