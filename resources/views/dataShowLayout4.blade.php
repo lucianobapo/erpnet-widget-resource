@@ -23,13 +23,6 @@
 @endsection
 
 @section('content')
-    <meta property="og:type" content="article">
-    <meta property="og:image" content="{{ Request::route()->getName()=='post.showRandom'?route('post.showFile', [$dataModelSelected, $customFormAttr['providerId'], $dataModelSelected->file]):$dataModelSelected->fileImageUrlField('file') }}">
-    <meta property="og:image:width" content="800">
-    <meta property="og:image:height" content="420">
-    <meta property="og:title" content="{{ $dataModelSelected->title }}">
-    <meta property="og:description" content="{{ $dataModelSelected->description }}">
-
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
