@@ -10,7 +10,7 @@
     {{--<meta property="article:tag" content="Teste qual super-herói você seria">--}}
 
     <meta property="og:type" content="article">
-    <meta property="og:image" content="{{ $dataModelSelected->fileImageUrlField('file') }}">
+    <meta property="og:image" content="{{ Request::route()->getName()=='post.showRandom'?route('post.showFile', [$dataModelSelected, $customFormAttr['providerId'], $dataModelSelected->file]):$dataModelSelected->fileImageUrlField('file') }}">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="420">
     <meta property="og:title" content="{{ $dataModelSelected->title }}">
@@ -19,7 +19,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{ $dataModelSelected->title }}">
     <meta name="twitter:description" content="{{ $dataModelSelected->description }}">
-    <meta name="twitter:image" content="{{ $dataModelSelected->fileImageUrlField('file') }}">
+    <meta name="twitter:image" content="{{ Request::route()->getName()=='post.showRandom'?route('post.showFile', [$dataModelSelected, $customFormAttr['providerId'], $dataModelSelected->file]):$dataModelSelected->fileImageUrlField('file') }}">
 @endsection
 
 @section('content')
