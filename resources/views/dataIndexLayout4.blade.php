@@ -41,11 +41,11 @@
                                             <a class="btn btn-primary" title="{{ t('More Data') }}">
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                             </a>
-                                            <a href="{{ Route::getRoutes()->hasNamedRoute($routePrefix.'.edit')?route($routePrefix.'.edit', [$item['id'], '#form']):route($routePrefix.'.show', [$item['id'], '#form']) }}" class="btn btn-primary" title="{{ t('Edit') }}">
+                                            <a href="{{ Route::getRoutes()->hasNamedRoute($routePrefix.'.edit')?route($routePrefix.'.edit', [$item[$item->getRouteKeyName()], '#form']):route($routePrefix.'.show', [$item['id'], '#form']) }}" class="btn btn-primary" title="{{ t('Edit') }}">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
 
-                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.destroy', $item['id']] ]) }}
+                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.destroy', $item[$item->getRouteKeyName()]] ]) }}
                                                 <button type="submit" class="btn btn-danger" title="{{ t('Delete') }}">
                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                 </button>
