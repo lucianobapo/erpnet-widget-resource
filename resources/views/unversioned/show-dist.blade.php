@@ -56,7 +56,7 @@
         {{--Botão "Login"--}}
         @if(Auth::guest())
             <p>
-                <a href="{{ Route::getRoutes()->hasNamedRoute('auth.redirect')?route('auth.redirect'):url('/') }}" class="btn btn-primary">
+                <a href="{{ Route::getRoutes()->hasNamedRoute('socialAuth.redirect')?route('socialAuth.redirect', 'facebook'):url('/') }}" class="btn btn-primary">
                     <i class="fa fa-facebook-official"></i> Conecte-se com Facebook
                 </a>
             </p>
