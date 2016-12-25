@@ -56,8 +56,13 @@
             <ul class="nav navbar-nav">
                 @if(Route::has('post.home')) <li><a href="{{ route('post.home') }}">home</a></li> @endif
                 @if(config('erpnetWidgetResource.showToAdmin') || (Auth::check() && is_callable([Auth::user(), 'isAdmin']) && Auth::user()->isAdmin()))
-                    @if(Route::has('post.index'))<li><a href="{{ route('post.index') }}">post</a></li>@endif
-                    @if(Route::has('user.index'))<li><a href="{{ route('user.index') }}">user</a></li>@endif
+                        @foreach(config('erpnetMigrates.tables') as $table => $config)
+                            @if(Route::has(isset($config['routePrefix'])?$config['routePrefix']:str_singular($table).'.index'))
+                                <li><a href="{{ route(isset($config['routePrefix'])?$config['routePrefix']:str_singular($table).'.index') }}">
+                                        {{ isset($config['routeLinkName'])?$config['routeLinkName']:ucfirst($table) }}
+                                    </a></li>
+                            @endif
+                        @endforeach
                 @endif
                 {{--<li><a href="{{ route('partners.index') }}">partners</a></li>--}}
                 {{--<li><a href="{{ route('productGroups.index') }}">productGroups</a></li>--}}

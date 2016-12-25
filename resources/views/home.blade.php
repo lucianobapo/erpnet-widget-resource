@@ -1,4 +1,4 @@
-@extends('erpnetWidgetResource::layouts.unversionedLayout')
+@extends('erpnetWidgetResource::layouts.mainLayout')
 
 @section('content')
     <div class="container-fluid">

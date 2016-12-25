@@ -18,6 +18,8 @@
             <div class="well"><em>Sem Imagem</em></div>
         @endif
 
+        <p><em>{{ $dataModelSelected['hint'] }}</em></p>
+
         <div class="well">
             <div class="fb-like"
                  data-href="{{ (Request::route()->getName()=='post.random' && Auth::check())?route('post.showRandom', [$dataModelSelected, Auth::user()->provider_id, $dataModelSelected->file]):url($_SERVER['REQUEST_URI']) }}"
