@@ -71,11 +71,11 @@
                                         <ul>
                                             @foreach(isset($fields)?$fields:[] as $key => $field)
                                                 @if(is_string($field) && isset($item[$field]))
-                                                    <li class="" style="">
+                                                    <li class="" style="word-wrap: break-word;">
                                                         {{ ucfirst($field) }}: {{ $item[$field] }}
                                                     </li>
                                                 @elseif(is_array($field) && !isset($field['header']))
-                                                    <li class="" style="{{ empty($item[$key])?'display:none':'' }}">
+                                                    <li class="" style="word-wrap: break-word; {{ empty($item[$key])?'display:none':'' }}">
                                                         @if(isset($field['label']))
                                                             {{ $field['label'] }}
                                                         @else
