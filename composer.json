@@ -25,5 +25,15 @@
         "psr-4": {
             "ErpNET\\WidgetResourceTests\\": "tests/"
         }
-    }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "npm install",
+            "php artisan vendor:publish --tag=fonts"
+        ],
+        "post-update-cmd": [
+            "npm install",
+            "php artisan vendor:publish --tag=fonts"
+        ]
+    },
 }

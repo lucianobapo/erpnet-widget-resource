@@ -56,8 +56,13 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
 
         $this->publishes([
             $projectRootDir.'config/erpnetWidgetResource.php' => config_path('erpnetWidgetResource.php'),
+        ], 'config');
+        $this->publishes([
+            $projectRootDir.'node_modules/font-awesome/fonts' => public_path('fonts'),
+        ], 'fonts');
+        $this->publishes([
             $projectRootDir.'resources/views' => base_path('resources/views/vendor/erpnetWidgetResource'),
-        ]);
+        ], 'views');
 
     }
 }
