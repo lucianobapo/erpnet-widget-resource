@@ -35,5 +35,5 @@
             "npm install",
             "php artisan vendor:publish --tag=fonts"
         ]
-    },
+    }
 }
