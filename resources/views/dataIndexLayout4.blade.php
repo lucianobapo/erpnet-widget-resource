@@ -45,17 +45,20 @@
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
 
-                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.cancel', $item[$item->getRouteKeyName()]] ]) }}
+                                            @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.cancel'))
+                                                {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.cancel', $item[$item->getRouteKeyName()]] ]) }}
                                                 <button type="submit" class="btn btn-danger" title="{{ t('Cancel') }}">
                                                     <i class="fa fa-ban" aria-hidden="true"></i>
                                                 </button>
-                                            {{ Form::close() }}
-
-                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.finish', $item[$item->getRouteKeyName()]] ]) }}
+                                                {{ Form::close() }}
+                                            @endif
+                                            @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.finish'))
+                                                {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.finish', $item[$item->getRouteKeyName()]] ]) }}
                                                 <button type="submit" class="btn btn-danger" title="{{ t('Finish') }}">
                                                     <i class="fa fa-hand-o-down" aria-hidden="true"></i>
                                                 </button>
-                                            {{ Form::close() }}
+                                                {{ Form::close() }}
+                                            @endif
 
                                             {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.destroy', $item[$item->getRouteKeyName()]] ]) }}
                                                 <button type="submit" class="btn btn-danger" title="{{ t('Delete') }}">
