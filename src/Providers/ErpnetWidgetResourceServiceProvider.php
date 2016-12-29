@@ -59,9 +59,13 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
         ], 'config');
         $this->publishes([
             $projectRootDir.'node_modules/font-awesome/fonts' => public_path('fonts'),
-        ], 'fonts');
+        ], 'erpnetWidgetResourceFonts');
         $this->publishes([
-            $projectRootDir.'resources/views' => base_path('resources/views/vendor/erpnetWidgetResource'),
+            $projectRootDir.'resources/assets' => resource_path('assets/vendor/erpnetWidgetResource'),
+            $projectRootDir.'gulpfile.js' => resource_path('assets/vendor/erpnetWidgetResource/js/gulpfile.js'),
+        ], 'erpnetWidgetResourceGulpfile');
+        $this->publishes([
+            $projectRootDir.'resources/views' => resource_path('views/vendor/erpnetWidgetResource'),
         ], 'views');
 
     }
