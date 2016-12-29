@@ -44,6 +44,9 @@
                                             <a href="{{ Route::getRoutes()->hasNamedRoute($routePrefix.'.edit')?route($routePrefix.'.edit', [$item[$item->getRouteKeyName()], '#form']):route($routePrefix.'.show', [$item['id'], '#form']) }}" class="btn btn-primary" title="{{ t('Edit') }}">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
+                                            <a href="{{ Route::getRoutes()->hasNamedRoute($routePrefix.'.finish')?route($routePrefix.'.finish', [$item[$item->getRouteKeyName()]]):'' }}" class="btn btn-primary" title="{{ t('Finish') }}">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </a>
 
                                             {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.destroy', $item[$item->getRouteKeyName()]] ]) }}
                                                 <button type="submit" class="btn btn-danger" title="{{ t('Delete') }}">
