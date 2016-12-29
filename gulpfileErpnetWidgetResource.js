@@ -14,6 +14,11 @@ require('laravel-elixir-vue-2');
  */
 
 elixir((mix) => {
-    mix.sass('../vendor/erpnetWidgetResource/sass/app.scss')
-       .webpack('../vendor/erpnetWidgetResource/js/app.js');
+    mix
+        .sass('../vendor/erpnetWidgetResource/sass/app.scss')
+        .webpack('../vendor/erpnetWidgetResource/js/app.js')
+        .version([
+            'public/css/app.css',
+            'public/js/app.js'
+        ]);
 });

@@ -62,7 +62,7 @@ class ErpnetWidgetResourceServiceProvider extends ServiceProvider
         ], 'erpnetWidgetResourceFonts');
         $this->publishes([
             $projectRootDir.'resources/assets' => resource_path('assets/vendor/erpnetWidgetResource'),
-            $projectRootDir.'gulpfile.js' => resource_path('assets/vendor/erpnetWidgetResource/js/gulpfile.js'),
+            $projectRootDir.'gulpfileErpnetWidgetResource.js' => base_path('gulpfileErpnetWidgetResource.js'),
         ], 'erpnetWidgetResourceGulpfile');
         $this->publishes([
             $projectRootDir.'resources/views' => resource_path('views/vendor/erpnetWidgetResource'),
