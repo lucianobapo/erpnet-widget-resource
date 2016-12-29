@@ -35,54 +35,58 @@
 
                         <div class="list-group">
                             @forelse(isset($data)?$data:[] as $item)
-                                <div class="list-group-item list-group-item-action">
-                                    @if($showToAdmin)
-                                        <div class="pull-right">
-                                            <a class="btn btn-primary" title="{{ t('More Data') }}">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </a>
-                                            <a href="{{ Route::getRoutes()->hasNamedRoute($routePrefix.'.edit')?route($routePrefix.'.edit', [$item[$item->getRouteKeyName()], '#form']):route($routePrefix.'.show', [$item['id'], '#form']) }}" class="btn btn-primary" title="{{ t('Edit') }}">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </a>
-
-                                            @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.cancel'))
-                                                {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.cancel', $item[$item->getRouteKeyName()]] ]) }}
-                                                <button type="submit" class="btn btn-danger" title="{{ t('Cancel') }}">
-                                                    <i class="fa fa-ban" aria-hidden="true"></i>
-                                                </button>
-                                                {{ Form::close() }}
-                                            @endif
-                                            @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.finish'))
-                                                {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.finish', $item[$item->getRouteKeyName()]] ]) }}
-                                                <button type="submit" class="btn btn-danger" title="{{ t('Finish') }}">
-                                                    <i class="fa fa-hand-o-down" aria-hidden="true"></i>
-                                                </button>
-                                                {{ Form::close() }}
-                                            @endif
-
-                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.destroy', $item[$item->getRouteKeyName()]] ]) }}
-                                                <button type="submit" class="btn btn-danger" title="{{ t('Delete') }}">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                </button>
-                                            {{ Form::close() }}
-                                        </div>
-                                    @endif
-
+                                <div class="list-group-item">
                                     <h5 class="list-group-item-heading">
-                                        @foreach(isset($fields)?$fields:[] as $key => $field)
-                                            @if(is_array($field) && isset($field['header']) && ($field['header']===true))
-                                                {{ $item['id'] }}::
-                                                @if(isset($field['customShow']) && get_class($field['customShow'])=='Closure')
-                                                    {!! $field['customShow']($item) !!}
-                                                @else
-                                                    {{ $item[$key] }}
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                @foreach(isset($fields)?$fields:[] as $key => $field)
+                                                    @if(is_array($field) && isset($field['header']) && ($field['header']===true))
+                                                        {{ $item['id'] }}::
+                                                        @if(isset($field['customShow']) && get_class($field['customShow'])=='Closure')
+                                                            {!! $field['customShow']($item) !!}
+                                                        @else
+                                                            {{ $item[$key] }}
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                            <div class="col-md-6">
+                                                @if($showToAdmin)
+                                                    <div class="pull-right">
+                                                        <a class="btn btn-primary" title="{{ t('More Data') }}">
+                                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a href="{{ Route::getRoutes()->hasNamedRoute($routePrefix.'.edit')?route($routePrefix.'.edit', [$item[$item->getRouteKeyName()], '#form']):route($routePrefix.'.show', [$item['id'], '#form']) }}" class="btn btn-primary" title="{{ t('Edit') }}">
+                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                        </a>
+
+                                                        @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.cancel'))
+                                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.cancel', $item[$item->getRouteKeyName()]] ]) }}
+                                                            <button type="submit" class="btn btn-danger" title="{{ t('Cancel') }}">
+                                                                <i class="fa fa-ban" aria-hidden="true"></i>
+                                                            </button>
+                                                            {{ Form::close() }}
+                                                        @endif
+                                                        @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.finish'))
+                                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.finish', $item[$item->getRouteKeyName()]] ]) }}
+                                                            <button type="submit" class="btn btn-danger" title="{{ t('Finish') }}">
+                                                                <i class="fa fa-hand-o-down" aria-hidden="true"></i>
+                                                            </button>
+                                                            {{ Form::close() }}
+                                                        @endif
+
+                                                        {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.destroy', $item[$item->getRouteKeyName()]] ]) }}
+                                                        <button type="submit" class="btn btn-danger" title="{{ t('Delete') }}">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </button>
+                                                        {{ Form::close() }}
+                                                    </div>
                                                 @endif
-                                            @endif
-                                        @endforeach
+                                            </div>
+                                        </div>
                                     </h5>
 
                                     <div class="list-group-item-text" style="">
-
                                         <ul>
                                             @foreach(isset($fields)?$fields:[] as $key => $field)
                                                 @if(is_string($field) && isset($item[$field]))
@@ -113,7 +117,7 @@
 
                                 </div>
                             @empty
-                                <div class="list-group-item list-group-item-action">
+                                <div class="list-group-item">
                                     <em>Sem registros</em>
                                 </div>
                             @endforelse
