@@ -69,7 +69,7 @@
                                                         @endif
                                                         @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.finish'))
                                                             {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.finish', $item[$item->getRouteKeyName()]] ]) }}
-                                                            <button type="submit" class="btn btn-danger" title="{{ t('Finish') }}">
+                                                            <button type="submit" class="btn btn-success" title="{{ t('Finish') }}">
                                                                 <i class="fa fa-check-square-o" aria-hidden="true"></i>
                                                             </button>
                                                             {{ Form::close() }}
