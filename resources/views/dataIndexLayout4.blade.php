@@ -68,9 +68,9 @@
                                                             {{ Form::close() }}
                                                         @endif
 
-                                                        @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.desactivate'))
-                                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.desactivate', $item[$item->getRouteKeyName()]] ]) }}
-                                                            <button type="submit" class="btn btn-danger" title="{{ t('Desactivate') }}">
+                                                        @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.deactivate'))
+                                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.deactivate', $item[$item->getRouteKeyName()]] ]) }}
+                                                            <button type="submit" class="btn btn-danger" title="{{ t('Deactivate') }}">
                                                                 <i class="fa fa-times" aria-hidden="true"></i>
                                                             </button>
                                                             {{ Form::close() }}
