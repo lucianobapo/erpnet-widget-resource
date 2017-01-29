@@ -60,17 +60,26 @@
                                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                         </a>
 
-                                                        @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.cancel'))
-                                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.cancel', $item[$item->getRouteKeyName()]] ]) }}
-                                                            <button type="submit" class="btn btn-danger" title="{{ t('Cancel') }}">
-                                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                                            </button>
-                                                            {{ Form::close() }}
-                                                        @endif
                                                         @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.finish'))
                                                             {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.finish', $item[$item->getRouteKeyName()]] ]) }}
                                                             <button type="submit" class="btn btn-success" title="{{ t('Finish') }}">
                                                                 <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                                            </button>
+                                                            {{ Form::close() }}
+                                                        @endif
+
+                                                        @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.desactivate'))
+                                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.desactivate', $item[$item->getRouteKeyName()]] ]) }}
+                                                            <button type="submit" class="btn btn-danger" title="{{ t('Desactivate') }}">
+                                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                                            </button>
+                                                            {{ Form::close() }}
+                                                        @endif
+
+                                                        @if(Route::getRoutes()->hasNamedRoute($routePrefix.'.cancel'))
+                                                            {{ Form::open(['style'=> 'display: inline-block;', 'method' => 'DELETE', 'route' => [$routePrefix.'.cancel', $item[$item->getRouteKeyName()]] ]) }}
+                                                            <button type="submit" class="btn btn-danger" title="{{ t('Cancel') }}">
+                                                                <i class="fa fa-times" aria-hidden="true"></i>
                                                             </button>
                                                             {{ Form::close() }}
                                                         @endif
@@ -80,6 +89,7 @@
                                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                                         </button>
                                                         {{ Form::close() }}
+
                                                     </div>
                                                 @endif
                                             </div>
